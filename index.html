@@ -1,0 +1,486 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>PSSS</title>
+
+  <style>
+    body * {
+      font-family: sans-serif;
+      font-size: small;
+      color: lightgray;
+    }
+
+    input, select, select option {
+      color: black;
+      background-color: lightgray;
+      width:8em;
+    }
+
+    button {
+      color: black;
+      background-color: lightgray;
+    }
+
+    select#lstParticlePresets {
+      width:16em
+    }
+  </style>
+
+</head>
+
+<body style="background-color: black;color: white;">
+  <button id="cmdToggleSettings">Edit</button>
+  <select name="lstParticlePresets" id="lstParticlePresets"></select>
+  <hr/>
+  <div id="pnlSettings" style="display: inline-block;">
+    <div>      
+      <label for="txtParticleCount">Count</label><input type="number" id="txtParticleCount" name="txtParticleCount" min="1" max="500000" step="100">
+      <label for="txtBlur">Blur</label><input type="number" id="txtBlur" name="txtBlur" min="0" max="100" step="0.1">
+      <label for="txtBrightness">Brightness</label><input type="number" id="txtBrightness" name="txtBrightness" min="0" max="1" step="0.02">
+    </div>
+    <hr/>
+    <div>
+      <table>
+        <tr>
+          <th colspan="3">Angle</th>
+          <th colspan="3">Rotation</th>
+        </tr>
+        <tr>
+          <td><input class="txtAngle" type="number" id="txtAngle_1" name="txtAngle_1" min="0" max="359" step="1"></td>
+          <td><input class="txtAngle" type="number" id="txtAngle_2" name="txtAngle_2" min="0" max="359" step="1"></td>
+          <td><input class="txtAngle" type="number" id="txtAngle_3" name="txtAngle_3" min="0" max="359" step="1"></td>
+          <td><input class="txtRotation" type="number" id="txtRotation_1" name="txtRotation_1" min="0" max="359" step="1"></td>
+          <td><input class="txtRotation" type="number" id="txtRotation_2" name="txtRotation_2" min="0" max="359" step="1"></td>
+          <td><input class="txtRotation" type="number" id="txtRotation_3" name="txtRotation_3" min="0" max="359" step="1"></td>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div style="display: inline-block;">    
+      <table>
+        <tr>
+          <th colspan="4">Color Wave</th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Red</th>
+          <th>Green</th>
+          <th>Blue</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input class="colorBase" type="number" id="txtColorBase_1" name="txtColorBase_1" min="0" max="100" step="1"></td>
+          <td><input class="colorBase" type="number" id="txtColorBase_2" name="txtColorBase_2" min="0" max="100" step="1"></td>
+          <td><input class="colorBase" type="number" id="txtColorBase_3" name="txtColorBase_3" min="0" max="100" step="1"></td>        
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input class="colorAmp" type="number" id="txtColorAmp_1" name="txtColorAmp_1" min="0" max="100" step="1"></td>
+          <td><input class="colorAmp" type="number" id="txtColorAmp_2" name="txtColorAmp_2" min="0" max="100" step="1"></td>
+          <td><input class="colorAmp" type="number" id="txtColorAmp_3" name="txtColorAmp_3" min="0" max="100" step="1"></td>        
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input class="colorFreq" type="number" id="txtColorFreq_1" name="txtColorFreq_1" min="0" max="100" step="0.1"></td>
+          <td><input class="colorFreq" type="number" id="txtColorFreq_2" name="txtColorFreq_2" min="0" max="100" step="0.1"></td>
+          <td><input class="colorFreq" type="number" id="txtColorFreq_3" name="txtColorFreq_3" min="0" max="100" step="0.1"></td>        
+        </tr>
+        <tr>
+          <th>Shift</th>
+          <td><input class="colorShift" type="number" id="txtShift_1" name="txtShift_1" min="0" max="100" step="0.01"></td>
+          <td><input class="colorShift" type="number" id="txtShift_2" name="txtShift_2" min="0" max="100" step="0.01"></td>
+          <td><input class="colorShift" type="number" id="txtShift_3" name="txtShift_3" min="0" max="100" step="0.01"></td>        
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div style="display: inline-block;">  
+      <table>
+        <tr>
+          <th colspan="3">X-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_1_X" name="txtWavePhase_1_X" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_1_X" name="cmdWaveZero_1_X">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_1_X" name="txtWaveBaseAM_1_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_1_X" name="txtWaveBaseFM_1_X" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_1_X" name="txtWaveAmpAM_1_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_1_X" name="txtWaveAmpFM_1_X" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_1_X" name="txtWaveFreqAM_1_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_1_X" name="txtWaveFreqFM_1_X" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">      
+      <table>
+        <tr>
+          <th colspan="3">Y-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+            <td><input type="number" class="wavePhase" id="txtWavePhase_1_Y" name="txtWavePhase_1_Y" min="0" max="100" step="1"></td>
+            <th><button class="cmdWaveZero" id="cmdWaveZero_1_Y" name="cmdWaveZero_1_Y">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_1_Y" name="txtWaveBaseAM_1_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_1_Y" name="txtWaveBaseFM_1_Y" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_1_Y" name="txtWaveAmpAM_1_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_1_Y" name="txtWaveAmpFM_1_Y" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_1_Y" name="txtWaveFreqAM_1_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_1_Y" name="txtWaveFreqFM_1_Y" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">
+      <table>
+        <tr>
+          <th colspan="3">Z-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_1_Z" name="txtWavePhase_1_Z" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_1_Z" name="cmdWaveZero_1_Z">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_1_Z" name="txtWaveBaseAM_1_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_1_Z" name="txtWaveBaseFM_1_Z" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_1_Z" name="txtWaveAmpAM_1_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_1_Z" name="txtWaveAmpFM_1_Z" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_1_Z" name="txtWaveFreqAM_1_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_1_Z" name="txtWaveFreqFM_1_Z" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div style="display: inline-block;">  
+      <table>
+        <tr>
+          <th colspan="3">X-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_2_X" name="txtWavePhase_2_X" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_2_X" name="cmdWaveZero_2_X">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_2_X" name="txtWaveBaseAM_2_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_2_X" name="txtWaveBaseFM_2_X" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_2_X" name="txtWaveAmpAM_2_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_2_X" name="txtWaveAmpFM_2_X" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_2_X" name="txtWaveFreqAM_2_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_2_X" name="txtWaveFreqFM_2_X" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+
+    <div style="display: inline-block;">      
+      <table>
+        <tr>
+          <th colspan="3">Y-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_2_Y" name="txtWavePhase_2_Y" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_2_Y" name="cmdWaveZero_2_Y">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_2_Y" name="txtWaveBaseAM_2_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_2_Y" name="txtWaveBaseFM_2_Y" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_2_Y" name="txtWaveAmpAM_2_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_2_Y" name="txtWaveAmpFM_2_Y" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_2_Y" name="txtWaveFreqAM_2_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_2_Y" name="txtWaveFreqFM_2_Y" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">
+      <table>
+        <tr>
+          <th colspan="3">Z-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_2_Z" name="txtWavePhase_2_Z" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_2_Z" name="cmdWaveZero_2_Z">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_2_Z" name="txtWaveBaseAM_2_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_2_Z" name="txtWaveBaseFM_2_Z" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_2_Z" name="txtWaveAmpAM_2_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_2_Z" name="txtWaveAmpFM_2_Z" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_2_Z" name="txtWaveFreqAM_2_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_2_Z" name="txtWaveFreqFM_2_Z" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div style="display: inline-block;">  
+      <table>
+        <tr>
+          <th colspan="3">X-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_3_X" name="txtWavePhase_3_X" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_3_X" name="cmdWaveZero_3_X">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_3_X" name="txtWaveBaseAM_3_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_3_X" name="txtWaveBaseFM_3_X" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_3_X" name="txtWaveAmpAM_3_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_3_X" name="txtWaveAmpFM_3_X" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_3_X" name="txtWaveFreqAM_3_X" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_3_X" name="txtWaveFreqFM_3_X" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">    
+      <table>
+        <tr>
+          <th colspan="3">Y-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_3_Y" name="txtWavePhase_3_Y" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_3_Y" name="cmdWaveZero_3_Y">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" class="waveBaseAM" id="txtWaveBaseAM_3_Y" name="txtWaveBaseAM_3_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveBaseFM" id="txtWaveBaseFM_3_Y" name="txtWaveBaseFM_3_Y" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" class="waveAmpAM" id="txtWaveAmpAM_3_Y" name="txtWaveAmpAM_3_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveAmpFM" id="txtWaveAmpFM_3_Y" name="txtWaveAmpFM_3_Y" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" class="waveFreqAM" id="txtWaveFreqAM_3_Y" name="txtWaveFreqAM_3_Y" min="0" max="100" step="1"></td>
+          <td><input type="number" class="waveFreqFM" id="txtWaveFreqFM_3_Y" name="txtWaveFreqFM_3_Y" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">
+      <table>
+        <tr>
+          <th colspan="3">Z-Axis</th>
+        </tr>
+        <tr>
+          <th>Phase</th>
+          <td><input type="number" class="wavePhase" id="txtWavePhase_3_Z" name="txtWavePhase_3_Z" min="0" max="100" step="1"></td>
+          <th><button class="cmdWaveZero" id="cmdWaveZero_3_Z" name="cmdWaveZero_3_Z">Zero</button></th>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <th>AM</th>
+          <th>FM</th>
+        </tr>
+        <tr>
+          <th>Base</th>
+          <td><input type="number" id="txtWaveBaseAM_3_Z" name="txtWaveBaseAM_3_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" id="txtWaveBaseFM_3_Z" name="txtWaveBaseFM_3_Z" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Amp</th>
+          <td><input type="number" id="txtWaveAmpAM_3_Z" name="txtWaveAmpAM_3_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" id="txtWaveAmpFM_3_Z" name="txtWaveAmpFM_3_Z" min="0" max="100" step="1"></th>
+        </tr>
+        <tr>
+          <th>Freq</th>
+          <td><input type="number" id="txtWaveFreqAM_3_Z" name="txtWaveFreqAM_3_Z" min="0" max="100" step="1"></td>
+          <td><input type="number" id="txtWaveFreqFM_3_Z" name="txtWaveFreqFM_3_Z" min="0" max="100" step="1"></th>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div>
+      <div>
+        <label for="lstTransMapStyle">TransMap Style</label>
+        <select name="lstTransMapStyle" id="lstTransMapStyle">
+          <option value="0">Wave Shift</option>
+          <option value="1">Wave Zoom</option>
+          <option value="2">Wave Zoom Overlay</option>
+          <option value="3">Wave Zoom Combined</option>      
+        </select>
+
+        <label for="chkTransMapFilter">Use TransMap</label><input type="checkbox" id="chkTransMapFilter" name="chkTransMapFilter" checked>
+        <label for="chkTransMapMode">TransMap Apply before</label><input type="checkbox" id="chkTransMapMode" name="chkTransMapMode" checked>                        
+      </div>
+      <br/>
+      <div style="display: inline-block;">
+        <table>
+          <tr>
+            <th>Center</th>
+            <td colspan="4">
+              <input type="number" id="txtTransMapCenterX" name="txtTransMapCenterX" min="0" max="100" step="1">
+              <input type="number" id="txtTransMapCenterY" name="txtTransMapCenterY" min="0" max="100" step="1">
+            </td>
+          </tr>
+          <tr>
+            <th>X-Amp</th>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_1_1" name="txtXAmp_1_1" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_1_2" name="txtXAmp_1_2" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_1_3" name="txtXAmp_1_3" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_1_4" name="txtXAmp_1_4" min="-100" max="100" step="0.1"></td>        
+          </tr>
+          <tr>
+            <th>X-Freq</th>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_1_1" name="txtXFreq_1_1" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_1_2" name="txtXFreq_1_2" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_1_3" name="txtXFreq_1_3" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_1_4" name="txtXFreq_1_4" min="0" max="100" step="1"></td>
+          </tr>
+          <tr>
+            <th>Y-Amp</th>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_1_1" name="txtYAmp_1_1" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_1_2" name="txtYAmp_1_2" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_1_3" name="txtYAmp_1_3" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_1_4" name="txtYAmp_1_4" min="-100" max="100" step="0.1"></td>
+          </tr>
+          <tr>
+            <th>Y-Freq</th>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_1_1" name="txtYFreq_1_1" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_1_2" name="txtYFreq_1_2" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_1_3" name="txtYFreq_1_3" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_1_4" name="txtYFreq_1_4" min="0" max="100" step="1"></td>
+          </tr>      
+        </table>
+      </div>    
+      <div style="display: inline-block;">
+        <table>
+          <tr>
+            <th>X-Amp</th>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_2_1" name="txtXAmp_2_1" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_2_2" name="txtXAmp_2_2" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_2_3" name="txtXAmp_2_3" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransXAmp" id="txtXAmp_2_4" name="txtXAmp_2_4" min="-100" max="100" step="0.1"></td>        
+          </tr>
+          <tr>
+            <th>X-Freq</th>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_2_1" name="txtXFreq_2_1" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_2_2" name="txtXFreq_2_2" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_2_3" name="txtXFreq_2_3" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransXFreq" id="txtXFreq_2_4" name="txtXFreq_2_4" min="0" max="100" step="1"></td>
+          </tr>
+          <tr>
+            <th>Y-Amp</th>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_2_1" name="txtYAmp_2_1" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_2_2" name="txtYAmp_2_2" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_2_3" name="txtYAmp_2_3" min="-100" max="100" step="0.1"></td>
+            <td><input type="number" class="txtTransYAmp" id="txtYAmp_2_4" name="txtYAmp_2_4" min="-100" max="100" step="0.1"></td>
+          </tr>
+          <tr>
+            <th>Y-Freq</th>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_2_1" name="txtYFreq_2_1" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_2_2" name="txtYFreq_2_2" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_2_3" name="txtYFreq_2_3" min="0" max="100" step="1"></td>
+            <td><input type="number" class="txtTransYFreq" id="txtYFreq_2_4" name="txtYFreq_2_4" min="0" max="100" step="1"></td>
+          </tr>      
+        </table>
+      </div>
+    </div>
+    <hr/>
+  </div>
+  <div style="display: inline-block; margin: auto;">
+    <canvas class="world" id="world" style="cursor: crosshair;" width="1024" height="768"></canvas>  
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="psss_presets.json"></script>
+  <script src="psss.js"></script>
+
+</body>
+</html>
