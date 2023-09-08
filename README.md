@@ -1,5 +1,7 @@
 # psss_js - Particle System Screen Saver engine Ported to Javascript
 
+For a running demo visit [Particle Systems Screen Saver Endinge Demo](http://mephzara.com/misc/psss_js/)
+
 The particle system screen saver was originally developed nearly 25 years ago. I wrote it in Delphi (Object Pascal) and assembler. At the time, I was delving into graphics code, filters, and 3D. Graphics cards, like the 3dfx Voodoo 3D accelerators, were still in their infancy and not a standard feature in PCs. I worked primarily with custom graphics programming and turned to assembler when I aimed to maximize the performance of my CPU.
 
 The culmination of these experiments was a screen saver that gained significant recognition. After uploading it to a 3dfx shareware site, it amassed over 50,000 downloads on its first night. Subsequently, I made it available on platforms like Tucows, CNET, Download.com, and many others. It received reviews in magazines and garnered positive ratings and feedback. Offered as shareware, some of my users even composed music for it, sharing their tracks with me. A notable highlight was my participation in the Liquid Sound Festival in Jena. There, the animations were tailored to sync with compositions by Jan Zehn and showcased at the Zeiss-Planetarium Jena.
