@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
-var gWidth = 1024;
-var gHeight = 768;
+var gWidth = 768;
+var gHeight = 512;
 
 //var gIntervalID;
 var gRequestID;
@@ -79,10 +79,6 @@ class PixelCanvas {
 
         // ??? necessary
         this.visCtx.fillRect(0, 0, this.#visCvs.width, this.#visCvs.height);
-        //this.#BufCtx.fillRect(0, 0, this.width, this.height);
-
-        //
-        //this.ImgData = this.#BufCtx.createImageData(this.width, this.height);
     }
 
     vis2Data() {
@@ -153,15 +149,6 @@ class PixelCanvas {
             this.mixPixel(x - 1, y, c, 2);
             this.mixPixel(x, y + 1, c, 2);
             this.mixPixel(x, y - 1, c, 2);
-
-            // var c1=[c[0],c[1],c[2],127];
-            // var c2=[c[0],c[1],c[2],63]
-
-            // this.setPixel(x  ,y  ,c1);
-            // this.setPixel(x+1,y  ,c2);
-            // this.setPixel(x-1,y  ,c2);
-            // this.setPixel(x  ,y+1,c2);
-            // this.setPixel(x  ,y-1,c2);
         }
     }
 
@@ -219,7 +206,6 @@ class TranslationMap {
         aDstY = this.rollToRange(aDstY, 0, this.height - 1);
 
         this.#transmap[aSrcY * this.width + aSrcX] = (aDstY * this.width + aDstX);
-        //this.#transmap[aDstY*this.width+aDstX]=(aSrcY*this.width+aSrcX);
     }
 
     applyTransMap(aSrcBuf, aDstBuf) {
@@ -757,11 +743,6 @@ class ParticleSystem extends Object3d {
         }
     }
 
-    //makeTestRandomCube(aSide,aColor) {}
-    //particleLine(x1,y1,z1,x2,y2,z2,aStartParticle,aSteps,aColor) {}
-    //convertImage(aImage,aWidth,aHeight) {}
-    //convertBitmap2(aImage,aWidth,aHeight,aColorMask,aColorTolerance) {}
-
     transform() {
         Util3d.rotatePoints(this._particles, this.#particlesTrans, Util3d.subAngle3d(this.angle, this.world.viewAngle));
         var tmpPos = Util3d.rotatePoint(Util3d.subPoint3d(this.position, this.world.viewPos), Util3d.subAngle3d(ANGLE3D_ZERO, this.world.viewAngle));
@@ -961,7 +942,6 @@ class ParticleWaves extends ParticleSystem {
             var p = aParticleArray[t];
 
             var v = Math.sin((n + aPH[aWaveIndex][aAxis]) * aFM[aWaveIndex][aAxis]) * aAM[aWaveIndex][aAxis];
-            //var v=Math.random()*100;
 
             p[aAxis] += v;
 
@@ -1043,10 +1023,10 @@ function testCube() {
     var world = new World3d([cv.width / 2, cv.height / 2], POINT3D_ZERO, ANGLE3D_ZERO, -(cv.width + cv.height) / 2, cv);
     var pSys = new ParticleSystem(world, 10000);
     pSys.rotationSpeed3d = [5, 5, 5];
-    //pSys.speed3d=[0,0,-50];
+
     pSys.renderMode = ParticleRenderMode.rmDrawStars
     world.addObject(pSys);
-    //pSys.makeTestCube(200,[255,255,255,255]);
+
     pSys.makeTestCube(200, null);
 
     intervalID = setInterval(function () {
@@ -1057,10 +1037,6 @@ function testCube() {
 }
 
 function selectPreset(aName) {
-    //if (gIntervalID) {
-    //    clearInterval(gIntervalID);
-    //}
-
     gPreset = JSON.parse(JSON.stringify(g_psss_presets[aName]));  // deep copy preset
 
     applyPreset();
@@ -1263,10 +1239,6 @@ function start() {
     $("#cmdToggleSettings").click(function () {
         $("#pnlSettings").toggle();
     });
-
-    // $("#lstParticlePresets").append(
-    //     $('<option></option>').val("").html("< Select Preset >")
-    // );
 
     $.each(g_psss_presets, function (actName, actPreset) {
         $("#lstParticlePresets").append(
