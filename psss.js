@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
-var gWidth = 768;
-var gHeight = 512;
+var gWidth = 1024;
+var gHeight = 768;
 
 //var gIntervalID;
 var gRequestID;
@@ -1529,6 +1529,35 @@ function start() {
         }
 
         calcTransMap();
+    });
+
+    //
+    $("#world").data("origWidth",$("#world").width());
+    $("#world").data("origHeight",$("#world").height());
+    $("#world").data("fullscreen",false);
+
+    $("#world").click(function () {     
+        if(!$("#world").data("fullscreen")) {
+            $("#world").width(window.innerWidth);
+            $("#world").height(window.innerHeight);
+            
+            $('#world').css({ 
+                position: "absolute",
+                marginLeft: 0, marginTop: 0,
+                top: 0, left: 0
+            });
+
+            $("#world").data("fullscreen",true);
+        } else {
+            $("#world").width($("#world").data("origWidth"));
+            $("#world").height($("#world").data("origHeight"));
+            
+            $('#world').css({ 
+                position: "relative"
+            });
+
+            $("#world").data("fullscreen",false);
+        }        
     });
 
     //

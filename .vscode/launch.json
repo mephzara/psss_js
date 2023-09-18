@@ -9,7 +9,7 @@
         "request": "launch",
         "reAttach": true,
         "name": "Firefox index.html",
-        "file": "${workspaceFolder}\\index.html"
+        "file": "${workspaceFolder}/index.html"
     },
     {
         "type": "msedge",
