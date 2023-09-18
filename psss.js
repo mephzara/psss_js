@@ -1547,6 +1547,15 @@ function start() {
                 top: 0, left: 0
             });
 
+            // enter fullscreen
+            if ($('#world')[0].requestFullscreen) {
+                $('#world')[0].requestFullscreen();
+            } else if ($('#world')[0].webkitRequestFullscreen) { /* Safari */
+                $('#world')[0].webkitRequestFullscreen();
+            } else if ($('#world')[0].msRequestFullscreen) { /* IE11 */
+                $('#world')[0].msRequestFullscreen();
+            }
+
             $("#world").data("fullscreen",true);
         } else {
             $("#world").width($("#world").data("origWidth"));
@@ -1555,6 +1564,15 @@ function start() {
             $('#world').css({ 
                 position: "relative"
             });
+
+            // exit fullscreen
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
 
             $("#world").data("fullscreen",false);
         }        
